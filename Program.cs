@@ -14,6 +14,16 @@ void printArray(string[] array)
   Console.Write($"\"{array[i]}\",");
   Console.Write($"\"{array[array.Length-1]}\"]");
 }
+int countElements (string[] array)
+{
+  int count = 0;
+  foreach (string element in array)
+  {
+    if (element.Length <= 3)
+        count++;
+  }
+  return count;
+}
 
 Console.Clear();
 string[] arrayString; 
@@ -27,3 +37,20 @@ while ((count < 1))
 arrayString = new string[count];
 inputArray(arrayString);
 printArray(arrayString);
+int countNew = countElements(arrayString);
+if (countNew > 0)
+{ 
+string[] newArrayString = new string[countNew];
+int i = 0;
+foreach (string element in arrayString)
+{
+  if (element.Length <= 3)
+  {
+    newArrayString[i] = element;
+    i++;
+  }
+}
+Console.Write(" -> ");
+printArray(newArrayString);
+}
+else Console.Write(" -> []");
